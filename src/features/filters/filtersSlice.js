@@ -13,6 +13,7 @@ export default function filtersReducer(state = initialState, action){
             }
         }
         case 'filters/colorFilterChanged':{
+            console.log('Updating filter color...');
             let { color, changeType } = action.payload
             const { colors } = state
 
