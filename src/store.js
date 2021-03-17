@@ -1,11 +1,15 @@
-import { createStore, compose } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import rootReducer from './reducer'
-import { 
-    sayHiOnDispatch,
-    includeMeaningOfLife
- } from './exampleAddons/enhancers'
+import { print1, print2, print3 } from './exampleAddons/middleware'
 
-const composedEnhancer = compose(sayHiOnDispatch, includeMeaningOfLife)
-const store = createStore(rootReducer, undefined, composedEnhancer)
+const middlewareEnhancer = applyMiddleware(print1, print2, print3)
+
+//* `print1...3` are middleware that log their respective number to the console between each `dispatch()` call 
+
+const store = createStore(rootReducer, middlewareEnhancer)
+/*
+    * `createStore(reducer, preloadedState, enhancer)` can also be described with
+    * `createStore(reducer, enhancer)` since all stores don't have preloaded state
+ */
 
 export default store
