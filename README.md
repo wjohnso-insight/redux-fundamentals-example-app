@@ -1,1 +1,1 @@
-(In-Flight Documentation)[https://www.craft.do/s/msHvMHfRiZve4O]
+[In-Flight Documentation](https://www.craft.do/s/msHvMHfRiZve4O)
