@@ -28,14 +28,14 @@ const initialState = [
         ]
     }
     case 'todos/todoToggled':{
-        return state.map(todo => {
+        return state.map((todo) => {
             if(todo.id !== action.payload){
                 return todo
             }
 
             return {
                 ...todo,
-                completed: !todo.completed
+                completed: !todo.completed,
             }
         })
     }
@@ -53,7 +53,8 @@ const initialState = [
         })
     }
     case 'todos/todoDeleted':{
-        return state.filter((_, i) => i !== action.payload) //* .filter() returns a new copy of the array, so this change is immutable 
+        const { todoId } = action.payload; 
+        return state.filter(todo => todo.id !== todoId) //* .filter() returns a new copy of the array, so this change is immutable 
     }
     case 'todos/allCompleted':{
         return state.map(todo => {
